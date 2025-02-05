@@ -20,4 +20,4 @@ app.use(express.urlencoded({ extended: false }));  // Parse application/x-www-fo
 app.use('/api/auth', authRouter);
 
 // ------------------ Server -------------------------
-app.listen(port, () => console.log(`Server running on port ${port}!`));
+app.listen(port, () => console.log(`🚀🚀🚀🚀Server running on port  ${port}!🚀🚀🚀🚀🚀🚀🚀🚀`));

@@ -1,6 +1,7 @@
 const express = require('express');
 const { connectDB } = require("./config/Databaese"); 
-    const authRouter = require('./Router/authRouter');
+const authRouter = require('./Router/authRouter');
+const adminRouter = require('./Router/adminRouter');
 
 const app = express();
 
@@ -18,6 +19,8 @@ app.use(express.urlencoded({ extended: false }));  // Parse application/x-www-fo
 
 // ------------------ Routes -------------------------
 app.use('/api/auth', authRouter);
+app.use('/admin/api', adminRouter);
+
 
 // ------------------ Server -------------------------
 app.listen(port, () => console.log(`🚀🚀🚀🚀Server running on port  ${port}!🚀🚀🚀🚀🚀🚀🚀🚀`));

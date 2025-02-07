@@ -1,6 +1,8 @@
 const express = require('express');
 const { connectDB } = require("./config/Databaese"); 
-    const authRouter = require('./Router/authRouter');
+const authRouter = require('./Router/authRouter');
+const adminRouter = require('./Router/adminRouter');
+const chatRouter = require('./Router/chatRouter');
 
 const app = express();
 
@@ -17,7 +19,9 @@ app.use(express.json());  // Parse application/json
 app.use(express.urlencoded({ extended: false }));  // Parse application/x-www-form-urlencoded
 
 // ------------------ Routes -------------------------
-app.use('/api/auth', authRouter);
+app.use('/api', authRouter);
+app.use('/api', adminRouter);
+app.use('/admin/api', chatRouter);
 
 // ------------------ Server -------------------------
 app.listen(port, () => console.log(`🚀🚀🚀🚀Server running on port  ${port}!🚀🚀🚀🚀🚀🚀🚀🚀`));

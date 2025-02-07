@@ -1,4 +1,4 @@
-const beycrpt = require("bcrypt");
+const beycrpt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { validationResult } = require("express-validator");
 const User = require("../models/UserModel");
@@ -90,7 +90,6 @@ const profile = async (req, res) => {
       user_name: user.name,
       user_email: user.email,
       user_mobile: user.mobile,
-      useri_Admin : user.is_Admin,
     });
   } catch (err) {
     console.error("Error during registration:", err);

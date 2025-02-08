@@ -20,8 +20,9 @@ app.use(express.urlencoded({ extended: false }));  // Parse application/x-www-fo
 
 // ------------------ Routes -------------------------
 app.use('/api', authRouter);
-app.use('/api', adminRouter);
-app.use('/admin/api', chatRouter);
+app.use('/api', chatRouter);
+app.use('/admin/api', adminRouter);
+
 
 // ------------------ Server -------------------------
 app.listen(port, () => console.log(`🚀🚀🚀🚀Server running on port  ${port}!🚀🚀🚀🚀🚀🚀🚀🚀`));

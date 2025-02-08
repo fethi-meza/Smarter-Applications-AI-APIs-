@@ -10,12 +10,12 @@ const chatSchema = new mongoose.Schema(
         conversation_id: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
-            ref: "User",
+            ref: "conversation",
         },
         chat_bot_id: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
-            ref: "ChatBot",
+            ref: "chatBot",
         },
         user_message: {
             type: String,

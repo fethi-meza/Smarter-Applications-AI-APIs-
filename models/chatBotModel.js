@@ -29,4 +29,7 @@ const chatBotSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('chatBot', chatBotSchema);
+// Check if the model is already defined to avoid overwriting it
+const ChatBot = mongoose.models.chatBot || mongoose.model('chatBot', chatBotSchema);
+
+module.exports = ChatBot;

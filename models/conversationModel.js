@@ -11,7 +11,7 @@ const conversationSchema = new mongoose.Schema(
             ref: "chatBot",
             required: true,
         },
-        message: {
+        last_message: {
             type: String,
             required: true,
         },

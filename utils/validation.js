@@ -7,11 +7,11 @@ const registerValidationRules = () => {
     return [
         body('name')
             .not().isEmpty().withMessage('Name is required'),
-        
+
         body('email')
             .isEmail().withMessage('Please enter a valid email address')
             .normalizeEmail(), // Normalize email to ensure consistency
-        
+
         body('password')
             .isLength({ min: 8, max: 30 }).withMessage('Password should be 8-30 characters long')
             .matches(/^[a-zA-Z0-9]*$/).withMessage('Password should be alphanumeric')
@@ -31,7 +31,7 @@ const loginValidationRules = () => {
         body('email')
             .isEmail().withMessage('Please enter a valid email address')
             .normalizeEmail(),
-        
+
         body('password')
             .isLength({ min: 8, max: 30 }).withMessage('Password should be 8-30 characters long')
             .matches(/^[a-zA-Z0-9]*$/).withMessage('Password should be alphanumeric')
@@ -46,7 +46,7 @@ const addchatBotRules = () => {
         body('message').not().isEmpty().withMessage('Message is required').trim(),
         body('prompt_message').not().isEmpty().withMessage('Prompt_message is required').trim(),
         body('status').not().isEmpty().withMessage('Status is required').isIn(['1', '0']).withMessage('Status must be 1 (active) or 0 (inactive)').trim(),
-        
+
         // Ensure file is uploaded and has correct mimetype
         body('image').custom((value, { req }) => {
             if (!req.file) {
@@ -67,7 +67,7 @@ const updateChatBotRules = () => {
         body('message').not().isEmpty().withMessage('Message is required').trim(),
         body('prompt_message').not().isEmpty().withMessage('Prompt_message is required').trim(),
         body('status').not().isEmpty().withMessage('Status is required').isIn(['1', '0']).withMessage('Status must be 1 (active) or 0 (inactive)').trim(),
-        
+
         // Ensure file is uploaded and has correct mimetype
         body('image').custom((value, { req }) => {
             if (!req.file) {
@@ -83,15 +83,22 @@ const updateChatBotRules = () => {
 
 const deleteChatBotRules = () => {
     return [
-        param('id').not().isEmpty().withMessage('Id is required').trim() ,
+        param('id').not().isEmpty().withMessage('Id is required').trim(),
     ];
 }
 
 
 const getChatBotByIdRules = () => {
     return [
-        param('id').not().isEmpty().withMessage('Id is required').trim() ,
+        param('id').not().isEmpty().withMessage('Id is required').trim(),
     ];
 }
 
-module.exports = { registerValidationRules, loginValidationRules, addchatBotRules , deleteChatBotRules, updateChatBotRules , getChatBotByIdRules};
+
+const sendMessageRules = () => {
+    return [
+        body('chat_bot_id').not().isEmpty().withMessage('Chat_bot_id is required').trim(),
+        body('message').not().isEmpty().withMessage('message is required').trim(),
+    ];
+};
+module.exports = { registerValidationRules, loginValidationRules, addchatBotRules, deleteChatBotRules, updateChatBotRules, getChatBotByIdRules, sendMessageRules };
